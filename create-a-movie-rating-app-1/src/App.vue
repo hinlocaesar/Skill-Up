@@ -22,7 +22,13 @@ const movies = reactive(items);
             <div>{{ movie.name }}</div>
           </div>
           <div class="movie-details-genres">
-            <div v-for="genre in movie.genres" class="movie-details-genre">{{ genre}}</div>
+            <div 
+              v-for="genre in movie.genres" 
+              class="movie-details-genre"
+              :key="`${movie.id}-${genre}`"
+            >
+            {{ genre}}
+          </div>
           </div>
           <div class="movie-details-description">
             <div>{{ movie.description }}</div>
@@ -31,7 +37,10 @@ const movies = reactive(items);
             <div class="movie-details-text">
                <div>Rating: {{ movie.rating }}/5</div>
             </div>
-            <div class="movie-details-star">
+            <div 
+            class="movie-details-star"
+            :key="`star-${star}`"
+            >
                <div v-for="star in movie.rating">⭐️</div>
             </div>
           </div>
